@@ -72,14 +72,16 @@ export function useBalances() {
         }
     }, []);
 
-    const eligibilityChecker = (tokens: any) => {
+    const eligibilityChecker = (tokens: TokenBalance[]) => {
         try{
-            tokens && tokens.map((token: any) => {
-            if(token.token_address == ChivasRegal && Number(token.balance) >= 1)
-                {
-                    setIsEligible({eligible:true,balance:Number(token.balance)})
-                }
-            })
+          const eligibleToken = tokens.find(
+            (token) => token.token_address === ChivasRegal && Number(token.balance) >= 1
+          );
+
+          if (eligibleToken) {
+            setIsEligible({ eligible: true, balance: Number(eligibleToken.balance) });
+          }
+          
         }catch(e) {
 
         }
