@@ -31,7 +31,7 @@ export function useBalances() {
 
 
             const token_balances = await fetch(
-                `https://deep-index.moralis.io/api/v2.2/0x6648560A1a5800BE0843D987297bDe5D4b240Ab1/erc20?` +
+                `https://deep-index.moralis.io/api/v2.2/${address}/erc20?` +
                   new URLSearchParams({
                     chain: current_chain,
                   }),
@@ -49,7 +49,7 @@ export function useBalances() {
               eligibilityChecker(tokens)
 
             const native_balance = await fetch(
-                `https://deep-index.moralis.io/api/v2.2/0x057Ec652A4F150f7FF94f089A38008f49a0DF88e/balance?` +
+                `https://deep-index.moralis.io/api/v2.2/${address}/balance?` +
                   new URLSearchParams({
                     chain: current_chain,
                   }),
